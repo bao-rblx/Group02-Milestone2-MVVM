@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_product_detail : SCREEN 2. Vertical Guideline 50% splits qty stepper
+     and stock label; horizontal Chain of 2 CTA buttons (weighted spread). -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/imgDetail"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/detail_image_height"
+        android:contentDescription="@string/product_image_desc"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_product_placeholder"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/space_16"
+        app:cardCornerRadius="@dimen/card_corner"
+        app:layout_constraintTop_toBottomOf="@id/imgDetail"
+        app:layout_constraintBottom_toTopOf="@id/btnAddCart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="@dimen/space_16">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/gl_mid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_headline"
+                android:textStyle="bold"
+                tools:text="Pixel 8 Pro 128GB"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDetailPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@color/price_green"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_headline"
+                tools:text="18.990.000 ₫"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailName"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDetailRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/product_rating"
+                app:layout_constraintTop_toBottomOf="@id/tvDetailPrice"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <!-- Barrier under rating row: description always clears it -->
+            <androidx.constraintlayout.widget.Barrier
+                android:id="@+id/barrier_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="tvDetailRating" />
+
+            <TextView
+                android:id="@+id/tvDescTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                android:text="@string/detail_desc_title"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/barrier_rating"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvDescBody"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/detail_desc_sample"
+                android:textSize="@dimen/text_body"
+                app:layout_constraintTop_toBottomOf="@id/tvDescTitle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <!-- Qty stepper (left of mid guideline) vs stock note (right) -->
+            <TextView
+                android:id="@+id/tvQty"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                android:text="@string/detail_qty"
+                app:layout_constraintTop_toBottomOf="@id/tvDescBody"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/gl_mid" />
+
+            <TextView
+                android:id="@+id/tvStock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_12"
+                android:gravity="end"
+                tools:text="Còn 12 sản phẩm"
+                app:layout_constraintTop_toBottomOf="@id/tvDescBody"
+                app:layout_constraintStart_toEndOf="@id/gl_mid"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Weighted spread chain: Add (1x) + Buy (2x) -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAddCart"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginStart="@dimen/space_16"
+        android:text="@string/detail_add_cart"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btnBuyNow"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnBuyNow"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="1"
+        android:layout_marginEnd="@dimen/space_8"
+        android:layout_marginBottom="@dimen/space_16" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnBuyNow"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height"
+        android:layout_marginEnd="@dimen/space_16"
+        android:text="@string/detail_buy_now"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAddCart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="2"
+        android:layout_marginBottom="@dimen/space_16" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

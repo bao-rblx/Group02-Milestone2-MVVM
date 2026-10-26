@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_cart : cart row. Vertical chain (name -> price -> stepper) + end delete. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/space_8">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/card_corner"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space_12">
+
+            <ImageView
+                android:id="@+id/imgCart"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:contentDescription="@string/product_image_desc"
+                android:src="@drawable/ic_product_placeholder"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvCartName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_12"
+                android:textStyle="bold"
+                android:maxLines="1"
+                tools:text="Pixel 8 Pro 128GB"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCart"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete" />
+
+            <TextView
+                android:id="@+id/tvCartPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_12"
+                android:textColor="@color/price_green"
+                tools:text="18.990.000 ₫"
+                app:layout_constraintTop_toBottomOf="@id/tvCartName"
+                app:layout_constraintStart_toEndOf="@id/imgCart"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete" />
+
+            <TextView
+                android:id="@+id/tvQtyLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/space_12"
+                tools:text="Số lượng: 2"
+                android:textSize="@dimen/text_caption"
+                app:layout_constraintTop_toBottomOf="@id/tvCartPrice"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/imgCart"
+                app:layout_constraintEnd_toStartOf="@id/btnDelete" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDelete"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:contentDescription="@string/cart_delete_desc"
+                android:text="✕"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

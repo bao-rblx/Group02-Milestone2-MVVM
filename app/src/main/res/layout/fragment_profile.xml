@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_profile : SCREEN 5. Guideline 30% avatar zone; label/value rows
+     with end Barrier aligning values; logout pinned bottom. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.30" />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/imgAvatar"
+        android:layout_width="@dimen/avatar_size"
+        android:layout_height="@dimen/avatar_size"
+        android:layout_marginTop="@dimen/space_24"
+        android:contentDescription="@string/profile_avatar_desc"
+        android:src="@drawable/ic_avatar_placeholder"
+        app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Full"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tvProfileName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/space_12"
+        android:text="@string/profile_name"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/imgAvatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnEdit"
+        app:layout_constraintHorizontal_chainStyle="packed" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEdit"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_edit"
+        app:layout_constraintTop_toTopOf="@id/tvProfileName"
+        app:layout_constraintBottom_toBottomOf="@id/tvProfileName"
+        app:layout_constraintStart_toEndOf="@id/tvProfileName"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvProfileEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/profile_email"
+        app:layout_constraintTop_toBottomOf="@id/tvProfileName"
+        app:layout_constraintBottom_toTopOf="@id/gl_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Option rows: icon + title + sub, value barrier on the right -->
+    <ImageView
+        android:id="@+id/icOrders"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="@dimen/space_16"
+        android:src="@drawable/ic_product_placeholder"
+        app:layout_constraintTop_toBottomOf="@id/gl_avatar"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOrders"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_orders"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/icOrders"
+        app:layout_constraintStart_toEndOf="@id/icOrders"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvOrdersSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_orders_sub"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintTop_toBottomOf="@id/tvOrders"
+        app:layout_constraintStart_toEndOf="@id/icOrders"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/icAddress"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_16"
+        android:src="@drawable/ic_product_placeholder"
+        app:layout_constraintTop_toBottomOf="@id/tvOrdersSub"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_address"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/icAddress"
+        app:layout_constraintStart_toEndOf="@id/icAddress"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvAddressSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_address_sub"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintTop_toBottomOf="@id/tvAddress"
+        app:layout_constraintStart_toEndOf="@id/icAddress"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageView
+        android:id="@+id/icSettings"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginTop="@dimen/space_16"
+        android:src="@drawable/ic_product_placeholder"
+        app:layout_constraintTop_toBottomOf="@id/tvAddressSub"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSettings"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_settings"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/icSettings"
+        app:layout_constraintStart_toEndOf="@id/icSettings"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvSettingsSub"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_12"
+        android:text="@string/profile_settings_sub"
+        android:textSize="@dimen/text_caption"
+        app:layout_constraintTop_toBottomOf="@id/tvSettings"
+        app:layout_constraintStart_toEndOf="@id/icSettings"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogout"
+        style="@style/Widget.Material3.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/btn_height"
+        android:layout_margin="@dimen/space_16"
+        android:text="@string/profile_logout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

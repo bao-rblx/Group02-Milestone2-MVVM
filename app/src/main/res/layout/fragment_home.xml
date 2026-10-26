@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- fragment_home : SCREEN 1. Guideline 12% top zone; Spread chain of 4 filter chips;
+     search bar; product RecyclerView; FAB anchored bottom-end. Zero nesting. -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.12" />
+
+    <TextView
+        android:id="@+id/tvGreeting"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:text="@string/home_greeting"
+        android:textSize="@dimen/text_headline"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/searchBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <com.google.android.material.search.SearchBar
+        android:id="@+id/searchBar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/search_height"
+        android:layout_marginStart="@dimen/space_16"
+        android:layout_marginEnd="@dimen/space_16"
+        android:hint="@string/home_search_hint"
+        app:layout_constraintTop_toBottomOf="@id/tvGreeting"
+        app:layout_constraintBottom_toTopOf="@id/chipAll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Spread chain: 4 chips share width equally across densities -->
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipAll"
+        style="@style/Widget.Material3.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="@string/chip_all"
+        app:layout_constraintTop_toBottomOf="@id/searchBar"
+        app:layout_constraintBottom_toTopOf="@id/tvFeatured"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/chipPhone"
+        app:layout_constraintHorizontal_chainStyle="spread" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipPhone"
+        style="@style/Widget.Material3.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chip_phone"
+        app:layout_constraintTop_toTopOf="@id/chipAll"
+        app:layout_constraintBottom_toBottomOf="@id/chipAll"
+        app:layout_constraintStart_toEndOf="@id/chipAll"
+        app:layout_constraintEnd_toStartOf="@id/chipLaptop" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipLaptop"
+        style="@style/Widget.Material3.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chip_laptop"
+        app:layout_constraintTop_toTopOf="@id/chipAll"
+        app:layout_constraintBottom_toBottomOf="@id/chipAll"
+        app:layout_constraintStart_toEndOf="@id/chipPhone"
+        app:layout_constraintEnd_toStartOf="@id/chipAccessory" />
+
+    <com.google.android.material.chip.Chip
+        android:id="@+id/chipAccessory"
+        style="@style/Widget.Material3.Chip.Filter"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/chip_accessory"
+        app:layout_constraintTop_toTopOf="@id/chipAll"
+        app:layout_constraintBottom_toBottomOf="@id/chipAll"
+        app:layout_constraintStart_toEndOf="@id/chipLaptop"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFeatured"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/space_16"
+        android:text="@string/home_section_featured"
+        android:textSize="@dimen/text_title"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/chipAll"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvSeeAll" />
+
+    <TextView
+        android:id="@+id/tvSeeAll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_16"
+        android:text="@string/home_see_all"
+        android:textColor="?attr/colorPrimary"
+        app:layout_constraintTop_toTopOf="@id/tvFeatured"
+        app:layout_constraintBottom_toBottomOf="@id/tvFeatured"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProducts"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_8"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/space_32"
+        tools:listitem="@layout/item_product"
+        app:layout_constraintTop_toBottomOf="@id/tvFeatured"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/space_16"
+        android:layout_marginBottom="@dimen/space_16"
+        android:contentDescription="@string/fab_filter_desc"
+        android:src="@drawable/ic_product_placeholder"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
